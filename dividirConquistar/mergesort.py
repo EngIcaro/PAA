@@ -1,5 +1,5 @@
 # Aluno: Ícaro Gabriel Paiva Bastos
-# Data: 16/10
+# Data: 16/10/2019
 
 # += 1 funciona
 #%%
