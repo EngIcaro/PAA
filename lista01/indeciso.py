@@ -1,37 +1,33 @@
-# -*- coding: utf-8 -*-
-"""
-Aluno: Ícaro Gabriel Paiva
-Questão: Sr. Indeciso
-"""
+import time
 
-#%%
-def binary(lista, dinheiro, begin, end,busca):
-    # 
-    if(busca == "hi"):
-        # Verificando o caso base
-        if(begin == end):
-            if(lista[begin] >= dinheiro):
-                return begin
-            return 0
-        mid = int((begin + end)/2)
-        print(mid)
-        if(lista[mid] >= dinheiro):
-            end = mid
-            return min(binary(lista, dinheiro, begin, end,"hi"), end)
-        else:
-            begin = mid - 1
-            return min(binary(lista, dinheiro, begin, end,"hi"), begin)
-
-    return 0
-
-
-
-n = int(input("entre com o valor de n:"))
+inicio = time.time()    
+n = int(input(""))
 lista = input().replace(" ", ",").split(",")
 lista = [int(x) for x in lista]
-print(lista)
 q = int(input(""))
-print("valor de q = {}".format(q))
 for i in range(q):
     dinheiro = int(input(""))
-    print(binary(lista, dinheiro,0, len(lista),"hi"))
+    begin = 0
+    end = len(lista)-1
+    hi = 0
+    lo = 0
+    beginlo = 0
+    endlo = len(lista)-1
+    while(begin <= end or beginlo <= endlo):
+        if(begin<= end):
+            mid = int((begin+end)/2)
+            if(lista[mid] >= dinheiro):
+                hi = mid
+                end = mid-1
+            else:
+                begin = mid + 1
+        if(beginlo <= endlo):
+            midlo = int((beginlo+endlo)/2)
+            if(lista[midlo] <= dinheiro):
+                lo = midlo
+                beginlo = midlo+1
+            else:
+                endlo = midlo - 1      
+    print(hi, lo)
+    fim = time.time()
+    print(fim - inicio)
