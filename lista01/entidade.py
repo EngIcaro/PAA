@@ -57,12 +57,33 @@ for i in range(config[1]):
     grafo[aresta[0]][1].append(aresta[1])
     grafo[aresta[1]][1].append(aresta[0])
 #%%
+visitados = [0]*1000000
+tempo = 0
+for j in grafo.keys():
+    maior = -1
+    index = 0
+    for i in grafo.keys():
+        if(maior < grafo[i][0] and (visitados[i]==0)):
+            maior = grafo[i][0]
+            index = i
+    adjacentes = grafo[index][1]
+    for i in range(len(adjacentes)):
+        if(visitados[adjacentes[i]] == 0):    
+            tempo += grafo[adjacentes[i]][0]
+    visitados[index] = 1
+    print(tempo)
+print(adjacentes)
+#%%
 grafo = sorted(grafo.values(), key=itemgetter(0), reverse= True)
 #%%
 values = []
 for i in grafo.values():
     values.append(i)
 values = sorted(values,key=itemgetter(0), reverse = True)
+#%%
+for i in range(len(values)):
+    atual = values[i]
+    
 #%%
 #Ordenando o dicionário
 valores = grafo.values()
